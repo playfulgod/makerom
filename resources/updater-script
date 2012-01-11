@@ -1,0 +1,163 @@
+show_progress(0.500000, 0);
+
+ui_print("Mounting");
+
+mount("ext3", "EMMC", "/dev/block/mmcblk0p6", "/cache");
+mount("ext3", "EMMC", "/dev/block/mmcblk0p12", "/system");
+mount("ext3", "EMMC", "/dev/block/mmcblk0p13", "/data");
+
+ui_print("Formatting System");
+
+delete_recursive("/system");
+delete_recursive("/system");
+delete_recursive("/system");
+delete_recursive("/data/system/usagestats");
+delete_recursive("/data/system/dropbox");
+
+ui_print("Installing Files");
+
+package_extract_dir("system", "/system");
+symlink("/factory/hdcp.keys", "/system/vendor/firmware/hdcp.keys");
+symlink("Roboto-Bold.ttf", "/system/fonts/DroidSans-Bold.ttf");
+symlink("Roboto-Regular.ttf", "/system/fonts/DroidSans.ttf");
+symlink("busybox", "/system/xbin/[", "/system/xbin/[[",
+        "/system/xbin/arp", "/system/xbin/ash", "/system/xbin/awk",
+        "/system/xbin/base64", "/system/xbin/basename", "/system/xbin/bbconfig",
+        "/system/xbin/blockdev", "/system/xbin/brctl", "/system/xbin/bunzip2",
+        "/system/xbin/bzcat", "/system/xbin/bzip2", "/system/xbin/cal",
+        "/system/xbin/cat", "/system/xbin/catv", "/system/xbin/chattr",
+        "/system/xbin/chgrp", "/system/xbin/chmod", "/system/xbin/chown",
+        "/system/xbin/chroot", "/system/xbin/clear", "/system/xbin/cmp",
+        "/system/xbin/comm", "/system/xbin/cp", "/system/xbin/cpio",
+        "/system/xbin/crond", "/system/xbin/crontab", "/system/xbin/cut",
+        "/system/xbin/date", "/system/xbin/dc", "/system/xbin/dd",
+        "/system/xbin/depmod", "/system/xbin/devmem", "/system/xbin/df",
+        "/system/xbin/diff", "/system/xbin/dirname", "/system/xbin/dmesg",
+        "/system/xbin/dnsd", "/system/xbin/dos2unix", "/system/xbin/du",
+        "/system/xbin/echo", "/system/xbin/ed", "/system/xbin/egrep",
+        "/system/xbin/env", "/system/xbin/expand", "/system/xbin/expr",
+        "/system/xbin/false", "/system/xbin/fdisk", "/system/xbin/fgrep",
+        "/system/xbin/find", "/system/xbin/flash_lock",
+        "/system/xbin/flash_unlock", "/system/xbin/flashcp",
+        "/system/xbin/flock", "/system/xbin/fold", "/system/xbin/free",
+        "/system/xbin/freeramdisk", "/system/xbin/fsync", "/system/xbin/ftpget",
+        "/system/xbin/ftpput", "/system/xbin/fuser", "/system/xbin/getopt",
+        "/system/xbin/grep", "/system/xbin/groups", "/system/xbin/gunzip",
+        "/system/xbin/gzip", "/system/xbin/halt", "/system/xbin/head",
+        "/system/xbin/hexdump", "/system/xbin/id", "/system/xbin/ifconfig",
+        "/system/xbin/insmod", "/system/xbin/install", "/system/xbin/iostat",
+        "/system/xbin/ip", "/system/xbin/kill", "/system/xbin/killall",
+        "/system/xbin/killall5", "/system/xbin/length", "/system/xbin/less",
+        "/system/xbin/ln", "/system/xbin/losetup", "/system/xbin/ls",
+        "/system/xbin/lsattr", "/system/xbin/lsmod", "/system/xbin/lsusb",
+        "/system/xbin/lzcat", "/system/xbin/lzma", "/system/xbin/lzop",
+        "/system/xbin/lzopcat", "/system/xbin/man", "/system/xbin/md5sum",
+        "/system/xbin/mesg", "/system/xbin/mkdir", "/system/xbin/mke2fs",
+        "/system/xbin/mkfifo", "/system/xbin/mkfs.ext2",
+        "/system/xbin/mkfs.vfat", "/system/xbin/mknod", "/system/xbin/mkswap",
+        "/system/xbin/mktemp", "/system/xbin/modinfo", "/system/xbin/modprobe",
+        "/system/xbin/more", "/system/xbin/mount", "/system/xbin/mountpoint",
+        "/system/xbin/mpstat", "/system/xbin/mv", "/system/xbin/nanddump",
+        "/system/xbin/nandwrite", "/system/xbin/netstat", "/system/xbin/nice",
+        "/system/xbin/nohup", "/system/xbin/nslookup", "/system/xbin/ntpd",
+        "/system/xbin/od", "/system/xbin/patch", "/system/xbin/pgrep",
+        "/system/xbin/pidof", "/system/xbin/ping", "/system/xbin/pkill",
+        "/system/xbin/pmap", "/system/xbin/poweroff", "/system/xbin/printenv",
+        "/system/xbin/printf", "/system/xbin/ps", "/system/xbin/pstree",
+        "/system/xbin/pwd", "/system/xbin/pwdx", "/system/xbin/rdev",
+        "/system/xbin/readlink", "/system/xbin/realpath", "/system/xbin/renice",
+        "/system/xbin/reset", "/system/xbin/resize", "/system/xbin/rev",
+        "/system/xbin/rm", "/system/xbin/rmdir", "/system/xbin/rmmod",
+        "/system/xbin/route", "/system/xbin/run-parts", "/system/xbin/rx",
+        "/system/xbin/sed", "/system/xbin/seq", "/system/xbin/setconsole",
+        "/system/xbin/setserial", "/system/xbin/setsid", "/system/xbin/sh",
+        "/system/xbin/sha1sum", "/system/xbin/sha256sum",
+        "/system/xbin/sha512sum", "/system/xbin/sleep", "/system/xbin/sort",
+        "/system/xbin/split", "/system/xbin/stat", "/system/xbin/strings",
+        "/system/xbin/stty", "/system/xbin/sum", "/system/xbin/swapoff",
+        "/system/xbin/swapon", "/system/xbin/sync", "/system/xbin/sysctl",
+        "/system/xbin/tac", "/system/xbin/tail", "/system/xbin/tar",
+        "/system/xbin/tee", "/system/xbin/telnet", "/system/xbin/telnetd",
+        "/system/xbin/test", "/system/xbin/tftp", "/system/xbin/tftpd",
+        "/system/xbin/time", "/system/xbin/timeout", "/system/xbin/top",
+        "/system/xbin/touch", "/system/xbin/tr", "/system/xbin/traceroute",
+        "/system/xbin/true", "/system/xbin/ttysize", "/system/xbin/tune2fs",
+        "/system/xbin/umount", "/system/xbin/uname", "/system/xbin/uncompress",
+        "/system/xbin/unexpand", "/system/xbin/uniq", "/system/xbin/unix2dos",
+        "/system/xbin/unlzma", "/system/xbin/unlzop", "/system/xbin/unxz",
+        "/system/xbin/unzip", "/system/xbin/uptime", "/system/xbin/usleep",
+        "/system/xbin/uudecode", "/system/xbin/uuencode", "/system/xbin/vi",
+        "/system/xbin/watch", "/system/xbin/wc", "/system/xbin/wget",
+        "/system/xbin/which", "/system/xbin/whoami", "/system/xbin/xargs",
+        "/system/xbin/xz", "/system/xbin/xzcat", "/system/xbin/yes",
+        "/system/xbin/zcat");
+symlink("iwmulticall", "/system/xbin/iwconfig", "/system/xbin/iwgetid",
+        "/system/xbin/iwlist", "/system/xbin/iwpriv",
+        "/system/xbin/iwspy");
+symlink("mksh", "/system/bin/sh");
+symlink("toolbox", "/system/bin/cat", "/system/bin/chmod",
+        "/system/bin/chown", "/system/bin/cmp", "/system/bin/date",
+        "/system/bin/dd", "/system/bin/df", "/system/bin/dmesg",
+        "/system/bin/getevent", "/system/bin/getprop", "/system/bin/hd",
+        "/system/bin/id", "/system/bin/ifconfig", "/system/bin/iftop",
+        "/system/bin/insmod", "/system/bin/ioctl", "/system/bin/ionice",
+        "/system/bin/kill", "/system/bin/ln", "/system/bin/log",
+        "/system/bin/ls", "/system/bin/lsmod", "/system/bin/lsof",
+        "/system/bin/mkdir", "/system/bin/mount", "/system/bin/mv",
+        "/system/bin/nandread", "/system/bin/netstat",
+        "/system/bin/newfs_msdos", "/system/bin/notify", "/system/bin/printenv",
+        "/system/bin/ps", "/system/bin/r", "/system/bin/reboot",
+        "/system/bin/renice", "/system/bin/rm", "/system/bin/rmdir",
+        "/system/bin/rmmod", "/system/bin/route", "/system/bin/schedtop",
+        "/system/bin/sendevent", "/system/bin/setconsole",
+        "/system/bin/setprop", "/system/bin/sleep", "/system/bin/smd",
+        "/system/bin/start", "/system/bin/stop", "/system/bin/sync",
+        "/system/bin/top", "/system/bin/touch", "/system/bin/umount",
+        "/system/bin/uptime", "/system/bin/vmstat", "/system/bin/watchprops",
+        "/system/bin/wipe");
+retouch_binaries("/system/lib/libwebcore.so", "41d36fa97bb09979f3d92266aec1b88c1aa6e1cb", "/system/lib/libGLESv2_dbg.so", "20a7635d4d3c66b8901b3700586c37888a27bb36", "/system/lib/libRS.so", "a80e74f583883727c15c24961f85c39da856b2fd", "/system/lib/libcamera_client.so", "90ca7e688c0f829d3d112793f748bf67a3f71117", "/system/lib/libsoundpool.so", "f77fc5c199a8ac589251137f91943d5228f85d2e", "/system/lib/libdrmframework_jni.so", "730e8e5ebf9ed5106556d45eb4bda38e24c22e20", "/system/lib/libncurses.so", "0036227c2feae07eff6a9586ffc381e41468bfe8", "/system/lib/libnfc_jni.so", "a4c6b89746c4f1fac058cbd60adbef551cb6bd78", "/system/lib/libsrec_jni.so", "993db62b43749269e71dd2e5c921b73b36f28e52", "/system/lib/libc.so", "e4516f0ca0415c524a3087675b45463e445dbeb4", "/system/lib/libstdc++.so", "ec879f0833c9a63ca3f386f176dafff07f05123d", "/system/lib/libstlport.so", "3676c122c319b3df40650c4fe1c492c87730b983", "/system/lib/libiprouteutil.so", "7bf27dcc88e27d9afe4db8a5553dca7f08958a26", "/system/lib/libGLESv1_CM.so", "b04672d438fac6b719d319a9cb6da7e5ef7c0eb4", "/system/lib/libstagefright_yuv.so", "c43dac74794e48f2acfff5609a91c508c3912c0e", "/system/lib/bluez-plugin/input.so", "516d45fc2057f62dec9a6da61e99b86e81e2b98c", "/system/lib/bluez-plugin/network.so", "c450cf6af59f12f6d8532724dc4250b1f3af2d18", "/system/lib/bluez-plugin/audio.so", "2b46b8b7afc5e4c47c99987030a7d1e827ea8175", "/system/lib/bluez-plugin/bluetooth-health.so", "695d8e4ec998087c6b9ecd32129b7c5fe9fbb6ed", "/system/lib/libext2_com_err.so", "6d8dad91c8b381ce512009c6a42faa67cdabd5f9", "/system/lib/libandroid.so", "a4e4ab5ed25249e7509ca866a22c97d42fcc3e46", "/system/lib/libvideoeditorplayer.so", "c37213924f84738c8bb15f82cbf43ae0c6adfaf8", "/system/lib/libdiskconfig.so", "0dfda4a28d86443767eb74270b0c07d883322c90", "/system/lib/libwebrtc_audio_preprocessing.so", "94f477d77b9517f91f3191253ddb5032bca1a9cc", "/system/lib/egl/egl.cfg", "4d50747fefcca7d073d1e8a0b79c06ce5d83cc7d", "/system/lib/egl/libGLES_android.so", "966b2c9e3fd2708ac61e26ee9ee10bde212bf2f5", "/system/lib/libhwui.so", "5199a14be584f2b630fa6de2016625bc785fd40a", "/system/lib/libclcore.bc", "a1e2610fdc0c2ef151248092fa32be807d1b983d", "/system/lib/libutils.so", "0279ae3e463fe7d36f3b5fe8827f9ec7b821e55a", "/system/lib/libstagefright_soft_mpeg4dec.so", "88a0525c3090a1c36d55d2f50dd7a64d5e014e58", "/system/lib/libdefcontainer_jni.so", "1b6a0e13fb1de0b1040fc6e4b208a4e632ea148b", "/system/lib/librs_jni.so", "502b1f50a0bb01b6343ffd8e68912af830319276", "/system/lib/hw/lights.s5pc110.so", "31dc1bdb3ee19d059f7258e776f1d807e0641ca8", "/system/lib/hw/audio.primary.default.so", "3e0adc9c15ca9b04fb956a3f2407753ee479714a", "/system/lib/hw/camera.goldfish.so", "afd824a62e883f062ad77d1d50043bd949df1811", "/system/lib/hw/sensors.herring.so", "6c0859f7be393ca78e80c15c599f937a00d856ab", "/system/lib/hw/audio.a2dp.default.so", "11743e4d971e2efd72e7fdd1ddb6663d04248af5", "/system/lib/hw/sensors.goldfish.so", "4468d79c32c540743e397c52ee5eefe2d7f3fe60", "/system/lib/hw/gps.goldfish.so", "cb377ff12100eb062cd5bcb11f64c7686a9e4fab", "/system/lib/hw/nfc.herring.so", "9d47f17b72acd2540ad75c788cf42549b2e3f2b1", "/system/lib/hw/audio_policy.default.so", "88ac6d7ce3ae5e898245238a68c215e29f13c327", "/system/lib/hw/lights.goldfish.so", "93ea8ef8a2943d5743207bcb53498123cef1a49b", "/system/lib/hw/audio.primary.goldfish.so", "f726614c2d51a7189d851c09abfebfb259b86a24", "/system/lib/hw/audio_policy.herring.so", "82f13177027e0db073879b65b0d8b37fffdc013d", "/system/lib/hw/hwcomposer.s5pc110.so", "c2c22d901009e38b066d20af299e82f2efb81896", "/system/lib/hw/audio.primary.herring.so", "c2631963c489670d5da11a975ca3ed38dc20563a", "/system/lib/hw/gralloc.default.so", "2c89ca58725432ec4ea7f317ab96c037392fa8a8", "/system/lib/hw/camera.herring.so", "d04ff35b96be0ec40ed650bbd6d777ebe2264653", "/system/lib/libnfc_ndef.so", "b555ebe34d2f68dec144390d0259ebd3a3557c06", "/system/lib/libstagefright_soft_vpxdec.so", "587f495c999efad1a947d3afe0660145cd36a68e", "/system/lib/libaudioflinger.so", "1a030511182660e494077739a1b2c32e4805e906", "/system/lib/libext2fs.so", "e9120db69465f73d402e1908f3c397a9fe4a90a5", "/system/lib/libdrm1.so", "105b5d4a3060af2910fdd0fb39b32d9e9773d785", "/system/lib/libchromium_net.so", "b68397f96e36c9ac4908b07ec1fdfc3504e0b507", "/system/lib/libstagefright_soft_mp3dec.so", "6b33204294d65b4de00a523e98daf652feb00107", "/system/lib/libctest.so", "d2cb4ad6d19fe4efe38d09b9614f12101d644f60", "/system/lib/libpowermanager.so", "10c795d5be65a4835ede1016c97954014a19d1a7", "/system/lib/libmtp.so", "6254bc875610af28fa8f6a2efa245bd0a6ec9c59", "/system/lib/libjnigraphics.so", "160dbd2804a8f89ed4288e2bcf978818ca122d72", "/system/lib/libcrypto.so", "897369ef2d6d50d6541f72be0516cc23a1e531a7", "/system/lib/libharfbuzz.so", "de09f247609dbc24d07eb9503a61e90e90731e44", "/system/lib/libwilhelm.so", "28f44d6d98d1133b1788165f8d7ed020a7d865cf", "/system/lib/libext4_utils.so", "e9c2d0fefc839c6eb0e986385daff3b6eddf6612", "/system/lib/libcutils.so", "1ecb47704415cca2c3196d3ecca31a07a6c8a8e1", "/system/lib/libspeexresampler.so", "3eae623dc7acad985611ebaf4a324f593fe8bc3b", "/system/lib/libskia.so", "2bc800f83617f9def0bbbfb09554ea2d88838c7a", "/system/lib/libWnnEngDic.so", "04b037eabd19c71ac02192f164f5b56640e61f19", "/system/lib/libSEC_OMX_Core.so", "e8aff46c4767dcb7936685769e33ca9bd002b830", "/system/lib/libril.so", "ab237ef9011c2030c068a94dcdf2ef1017b59ea6", "/system/lib/libandroid_runtime.so", "9cc8bda0b0706a2782111e0393b5bacb40d748f3", "/system/lib/libbluetooth.so", "2bb9ae39f7cf00e143ee1ef87a8094ac5a6c6f51", "/system/lib/libstagefright_soft_h264dec.so", "fad13616529db288bad23eb9e2ec478b0c61a801", "/system/lib/libOMX.SEC.M4V.Encoder.so", "e72496e5b72003ae1e5be2e6588d086eb907a1f9", "/system/lib/libvideoeditor_jni.so", "2c014fc983d35d4ea9410cbf23490e9ea82dd618", "/system/lib/libhardware.so", "d74c0049afbba597d3e64e805cd45cfd136eb92f", "/system/lib/libdrmframework.so", "454e413ef49e9de6174eeca125970abc7b8feb2a", "/system/lib/libs3cjpeg.so", "f9e52b89560903fa71ecf822658692f91d67c1a8", "/system/lib/libstagefrighthw.so", "5bc2184bb7ade86f8286ad0977fe18de432454b4", "/system/lib/libWnnJpnDic.so", "30a303c76d3ddb28448214fe8334ffa10b22ae2b", "/system/lib/libnativehelper.so", "effc0c9e5d0dc96d3b3b88dd67417d997ed4434c", "/system/lib/libbcc.so", "821ffdd277b6fe5a04a53b0754aa0bb644827251", "/system/lib/libsystem_server.so", "ed3853c0385989d20c7c8c44fb6ab4ef4a15716c", "/system/lib/libglib.so", "cd219b0fb27487f0b8703569da71be6203b327eb", "/system/lib/libext2_e2p.so", "4a401f0509dad9d7429a006e2067ca734db8d224", "/system/lib/libssl.so", "099b831a08805870a6f4ad5bcefc8506348080e8", "/system/lib/libSR_AudioIn.so", "3de771c221e5701f3e97a0df6fd4270085f76d87", "/system/lib/libsysutils.so", "deaa2ee44e68715fb5b385b701d6f7f1f9d3805b", "/system/lib/libbluetoothd.so", "16360b1421895e7e434fd1b501fc7041610ff99b", "/system/lib/libvorbisidec.so", "42d66d2520edd64e490700efe1f69e5dbdf8e9b9", "/system/lib/libnetlink.so", "995fe12a618ff5949b19754813e7dcce31fae0b4", "/system/lib/libext2_blkid.so", "283052edb87a7e81b5ffeec253febe54f94d6061", "/system/lib/libstagefright_soft_aacdec.so", "15ad3d87d7e9fa6ce9cd4896d523e00f88c8010d", "/system/lib/libttscompat.so", "1ccc12218b4db9dedff0921d3aa88f32ffa845a7", "/system/lib/libexif.so", "f9e461736764e8949ab3b37795d6d99c315265cf", "/system/lib/libfilterfw.so", "9ad12c8cc100f3b658bf91200b282df46caa7173", "/system/lib/libGLESv2.so", "928c22002e7c3d37ad2c175691e63a6416be986f", "/system/lib/libOMX.SEC.AVC.Decoder.so", "1edbf1ec8b991de3f3c0dd88cb0f4a343b8492e5", "/system/lib/libbluedroid.so", "d9a87162e64cff68f77660ad939ce967477a1061", "/system/lib/libsensorservice.so", "4143053cb561b907335536fa99d13174446811da", "/system/lib/librtp_jni.so", "7391173529a55e24e3a281afde3380aea7db38b3", "/system/lib/libgabi++.so", "2ed2bc3126c858d22a07350e9a5ec59dd538e1bc", "/system/lib/libsonivox.so", "c92fe7984e936882840a6e11b973ae62cae32a4e", "/system/lib/drm/libfwdlockengine.so", "98b48242a563ea0cc421d0a1869ee3df3ed6f15a", "/system/lib/libsurfaceflinger.so", "b215595a987da3312286f2cdae7615038b211724", "/system/lib/libOpenMAXAL.so", "fd35d8b02761c3154311b95a12ee68ab3b8182c5", "/system/lib/libc_malloc_debug_leak.so", "702c9939394d67bb7cc959e4564c2936c9fb14d9", "/system/lib/libz.so", "4f49f557988ea63de15d7a71eae0734d6e781b55", "/system/lib/libwpa_client.so", "acbd92e336c283ee9afcee2be538a25ec1fd550e", "/system/lib/libbcc.so.sha1", "7c6e9c4d65e8467d364d5feca1b400ea311a5ffb", "/system/lib/soundfx/libcyanogen-dsp.so", "f005b0c17794ab7fa9b91ab7f11a7a478740215e", "/system/lib/soundfx/libvisualizer.so", "6a0bef182f76c15ca13beb6247da3e609122f2df", "/system/lib/soundfx/libreverbwrapper.so", "ccbf011f4b936d9f62594a1b826da8a029d57eb4", "/system/lib/soundfx/libbundlewrapper.so", "aef980b8bf2529744c242e912ed2cd46d4c19861", "/system/lib/soundfx/libaudiopreprocessing.so", "b2cc12592a951e55ef878296efc7d73f70e1267c", "/system/lib/libhardware_legacy.so", "1913b36e35a3d235d7046a071a96a3f4c4278479", "/system/lib/libnfc.so", "c0d18f0f5740c518588898fe0e350c93e8faa692", "/system/lib/libOMX.SEC.M4V.Decoder.so", "ce88b2585fa1ce203a5e8c5900660aa90077db1a", "/system/lib/libm.so", "fc115ef1e4285684b718c377b58266036b8e02ad", "/system/lib/libvariablespeed.so", "0abb2a31339bc08f676f7ed0d5e0d9cdbf1687ed", "/system/lib/libdvm.so", "3e1918391c31a01ebfc229d06f54a14490128822", "/system/lib/libEGL.so", "6524b5bf02db57114343e15b4e7fc46a81af8f0e", "/system/lib/libbinder.so", "028aac771216ef06369b9c3117ab264d2ae1b3f0", "/system/lib/libpagemap.so", "444ce64c10e2d80bbd635e0dfbe9c0212f917174", "/system/lib/libicui18n.so", "4a2f7da61426a279372d9b071f555deac4b7c8c1", "/system/lib/libpower.so", "4763056305bea07475b65f556138dfe5cc9ef4a0", "/system/lib/libbcinfo.so", "5d4e6d513382d2858852d2081f043a72e3b6299c", "/system/lib/libjni_latinime.so", "5e4302c43b786c2cf64bcbc0178f7b736c89addb", "/system/lib/libext2_uuid.so", "b810748b78f13e30f9630d2f7867b6ab1563e1ca", "/system/lib/libc_malloc_debug_qemu.so", "ed517312fcdb733c9060af8e1f407823c4b405b1", "/system/lib/libandroid_servers.so", "8501e25332256337f7714cd764bf0797a425f9fa", "/system/lib/libdbus.so", "9ce511b4fc7ec6bf46e3169bea4d492d2b0a03bd", "/system/lib/libstagefright_amrnb_common.so", "4e4a8613deae8d8a01209325ab242a20311947a4", "/system/lib/libstagefright_avc_common.so", "6d88adaaec932f85a975bd956990a165993295c2", "/system/lib/libmediaplayerservice.so", "480c4058f84a1696e97693078401825f5d7f5821", "/system/lib/libaudioeffect_jni.so", "45a3e70e6ef2d0dfb1701b301bc9a903440ce565", "/system/lib/libeffects.so", "375a46bdc4ccc8e5e18533f71dc8ee4be06405a5", "/system/lib/libdl.so", "9993cf328d0c884c15ce8b01a5145e65bbd2f3fe", "/system/lib/libstagefright_foundation.so", "1a67bb1e818508642f2a614473d6215b43684a04", "/system/lib/libinput.so", "1fa2e6ec9110c487a055e783179e8f25734c5e85", "/system/lib/libpixelflinger.so", "e0dbd9342b629958319c593e5a5880f410973690", "/system/lib/libjni_mosaic.so", "698a6b39e896d67772e963f2ca9df11c3d111411", "/system/lib/libthread_db.so", "d9ffa49607536f2549481f78f2d95630bb13a5cf", "/system/lib/libnetutils.so", "0f922390df701ca07049b14500f8641dc8520f13", "/system/lib/libstagefright_soft_amrdec.so", "ffdaa33eef5fd362e9af23d08fc482bb02c7e116", "/system/lib/libui.so", "fe39b6f8d3bd07d500d6ae571fe7b045aabc2fe8", "/system/lib/libjpeg.so", "00cdda5f7fcef47b670245edc27afaf9e320d61f", "/system/lib/libjackpal-androidterm3.so", "ecaeb903c230d76e6becedc058fc61b518e9d60b", "/system/lib/libmedia.so", "22d46a27b1680ce592d74897809716fa7fcf965d", "/system/lib/libdrm1_jni.so", "e6f4da49d4d29184d8b7a78d44d9651c3b60b2df", "/system/lib/libETC1.so", "10bfafb75fb4d2526a018b4d8fd9a3b90976fabe", "/system/lib/libmedia_jni.so", "3f91e7fb3614f5a21256a89d97f860a0c5a51fdb", "/system/lib/libstagefright_soft_g711dec.so", "8b87804dfbba751288cf41736188b1303a946b30", "/system/lib/libext2_profile.so", "2f2c36e963c2337ee25c0d6df106e4990c3c89f4", "/system/lib/libemoji.so", "44d2dccb13f2d9ab52079d7ff60ff61828d37de8", "/system/lib/libreference-ril.so", "1c1b4a0176e6146e3a4e5fd5e308939115623dfd", "/system/lib/libpng.so", "836bd4015b08afe31ecfbb2184f1c2d7e12294aa", "/system/lib/libgui.so", "ed047f6e796deecb95c67c6149d4c2430d2ea950", "/system/lib/libicuuc.so", "0a96ae144609b78dfa1ffbec8d151ea737c60dc0", "/system/lib/libbtio.so", "751f1851b922b7993423d7bbd636ee6a5e5f1b05", "/system/lib/libstagefright_enc_common.so", "71732fc0b9175736f24b8d51db191c0d2e467209", "/system/lib/libaudioutils.so", "9c8d940009d4ed29d25277d55fb8323eb976ff1c", "/system/lib/libOMX.SEC.AVC.Encoder.so", "7383d7f8aab62f06746e1260e4a0e3e978d58913", "/system/lib/libtinyalsa.so", "0fc590aaef8cef9eef47a53a38d0c081ca5196c4", "/system/lib/libexpat.so", "53ccc35849a4159b3235ef168d4aba40d71fc6ef", "/system/lib/libttspico.so", "8eef2d171cfc114612d73e02b9e162db62eebb2f", "/system/lib/libstagefright.so", "5a147d97ab7d27dc577acd0f8ec9c87ffc8d833c", "/system/lib/libFFTEm.so", "99ef35fdc29e08cdbe7535c6a37db5dd2107620c", "/system/lib/liblog.so", "36dc2048b2b430c5afece77d0702a17f1c95a840", "/system/lib/libOpenSLES.so", "b5b0c646926482df472029453ed8a87cccb84677", "/system/lib/libusbhost.so", "d55481526c84aaa27996dec10e4bb86111c363db", "/system/lib/libstagefright_omx.so", "141ec74ba3429ddb701bd5b36c4cd06eebd3ed2a", "/system/lib/libsurfaceflinger_client.so", "12ba180d276b44d96e23f91c3d328f6ffdeed0eb", "/system/lib/libwnndict.so", "f374b20ec15b65680c87a59ef65d21650843748a", "/system/lib/libfilterpack_imageproc.so", "dfc948d8c370e9173b017c9b7a74bbf6a96d29ac", "/system/lib/libsqlite.so", "06d0184721514eb8cadcacb6a6d3dea6be70ceb2", "/system/lib/libstagefright_soft_vorbisdec.so", "27d80fcbd340207498af7f8b54677605d9818add", "/system/lib/libcameraservice.so", "daedee83bf7c2eae24ba0374d17ee0d086db645a", "/system/lib/libsqlite_jni.so", "50d2a7421b919a22b42273c23b2a4bf5964684c4");
+set_perm_recursive(0, 0, 0755, 0644, "/system");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/bin");
+set_perm(0, 3003, 02750, "/system/bin/netcfg");
+set_perm(0, 3004, 02755, "/system/bin/ping");
+set_perm(0, 2000, 06750, "/system/bin/run-as");
+set_perm_recursive(1002, 1002, 0755, 0440, "/system/etc/bluetooth");
+set_perm(0, 0, 0755, "/system/etc/bluetooth");
+set_perm(1000, 1000, 0640, "/system/etc/bluetooth/auto_pairing.conf");
+set_perm(3002, 3002, 0444, "/system/etc/bluetooth/blacklist.conf");
+set_perm(1002, 1002, 0440, "/system/etc/dbus.conf");
+set_perm(1014, 2000, 0550, "/system/etc/dhcpcd/dhcpcd-run-hooks");
+set_perm(0, 2000, 0550, "/system/etc/init.goldfish.sh");
+set_perm_recursive(0, 0, 0755, 0555, "/system/etc/ppp");
+set_perm(0, 2000, 0755, "/system/vendor");
+set_perm(0, 2000, 0755, "/system/vendor/etc");
+set_perm(0, 2000, 0755, "/system/vendor/firmware");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin");
+set_perm(0, 0, 06755, "/system/xbin/librank");
+set_perm(0, 0, 06755, "/system/xbin/procmem");
+set_perm(0, 0, 06755, "/system/xbin/procrank");
+set_perm(0, 0, 06755, "/system/xbin/su");
+show_progress(0.200000, 0);
+show_progress(0.200000, 10);
+show_progress(0.200000, 10);
+show_progress(0.100000, 0);
+
+ui_print("Replace Kernel");
+
+package_extract_file("boot.img", "/tmp/boot.img");
+run_program("/sbin/busybox", "dd", "if=/dev/zero", "of=/dev/block/mmcblk0p9");
+run_program("/sbin/busybox", "dd", "if=/tmp/boot.img", "of=/dev/block/mmcblk0p9");
+delete("/tmp/boot.img");
+
+ui_print("Formatting Cache & Dalvik");
+
+delete_recursive("/cache");
+delete_recursive("/data/dalvik-cache");
+
+ui_print("Unmounting");
+
+unmount("/system");
+unmount("/data");
+unmount("/cache");
+
+ui_print("Done");

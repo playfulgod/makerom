@@ -1,0 +1,49 @@
+show_progress(0.500000, 0);
+
+ui_print("Mounting");
+
+mount("ext3", "EMMC", "/dev/block/mmcblk0p6", "/cache");
+mount("ext3", "EMMC", "/dev/block/mmcblk0p12", "/system");
+mount("ext3", "EMMC", "/dev/block/mmcblk0p13", "/data");
+
+ui_print("Removing existing libraries");
+delete_recursive("/system/lib/egl/");
+
+ui_print("Installing Files");
+
+package_extract_dir("system", "/system");
+symlink("mksh", "/system/bin/sh");
+symlink("toolbox", "/system/bin/cat", "/system/bin/chmod",
+        "/system/bin/chown", "/system/bin/cmp", "/system/bin/date",
+        "/system/bin/dd", "/system/bin/df", "/system/bin/dmesg",
+        "/system/bin/getevent", "/system/bin/getprop", "/system/bin/hd",
+        "/system/bin/id", "/system/bin/ifconfig", "/system/bin/iftop",
+        "/system/bin/insmod", "/system/bin/ioctl", "/system/bin/ionice",
+        "/system/bin/kill", "/system/bin/ln", "/system/bin/log",
+        "/system/bin/ls", "/system/bin/lsmod", "/system/bin/lsof",
+        "/system/bin/mkdir", "/system/bin/mount", "/system/bin/mv",
+        "/system/bin/nandread", "/system/bin/netstat",
+        "/system/bin/newfs_msdos", "/system/bin/notify", "/system/bin/printenv",
+        "/system/bin/ps", "/system/bin/r", "/system/bin/reboot",
+        "/system/bin/renice", "/system/bin/rm", "/system/bin/rmdir",
+        "/system/bin/rmmod", "/system/bin/route", "/system/bin/schedtop",
+        "/system/bin/sendevent", "/system/bin/setconsole",
+        "/system/bin/setprop", "/system/bin/sleep", "/system/bin/smd",
+        "/system/bin/start", "/system/bin/stop", "/system/bin/sync",
+        "/system/bin/top", "/system/bin/touch", "/system/bin/umount",
+        "/system/bin/uptime", "/system/bin/vmstat", "/system/bin/watchprops",
+        "/system/bin/wipe");
+retouch_binaries( "/system/lib/libGLESv2_dbg.so" , "/system/lib/libGLESv1_CM.so" , "/system/lib/egl/egl.cfg" , "/system/lib/egl/libGLES_android.so" , "/system/lib/libglib.so" , "/system/lib/libGLESv2.so" , "/system/lib/libEGL.so", "/system/lib/egl/libEGL_adreno200.so", "/system/lib/egl/libGLESv1_CM_adreno200.so", "/system/lib/egl/libGLESv2_adreno200.so", "/system/lib/libgsl.so");
+
+ui_print("Formatting Cache & Dalvik");
+
+delete_recursive("/cache");
+delete_recursive("/data/dalvik-cache");
+
+ui_print("Unmounting");
+
+unmount("/system");
+unmount("/data");
+unmount("/cache");
+
+ui_print("Done");

@@ -1,0 +1,19 @@
+[achristianson@tvlinux: ~/android/tmp]$ find ./system/lib -iname '*egl*' -or -iname '*gles*' | sort
+./system/lib/egl
+./system/lib/egl/egl.cfg
+./system/lib/egl/libGLES_android.so
+./system/lib/libEGL.so
+./system/lib/libGLESv1_CM.so
+./system/lib/libGLESv2_dbg.so
+./system/lib/libGLESv2.so
+[achristianson@tvlinux: ~/android/tmp]$ find ../gv1.3/system/lib/ -iname '*egl*' -or -iname '*gles*' | sort
+../gv1.3/system/lib/egl
+../gv1.3/system/lib/egl/egl.cfg
+../gv1.3/system/lib/egl/libEGL_adreno200.so
+../gv1.3/system/lib/egl/libGLES_android.so
+../gv1.3/system/lib/egl/libGLESv1_CM_adreno200.so
+../gv1.3/system/lib/egl/libGLESv2_adreno200.so
+../gv1.3/system/lib/libEGL.so
+../gv1.3/system/lib/libGLESv1_CM.so
+../gv1.3/system/lib/libGLESv2.so
+[achristianson@tvlinux: ~/android/tmp]$
